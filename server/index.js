@@ -16,7 +16,7 @@ app.use(session({
 }))
 
 massive({
-    connection_string: CONNECTION_STRING,
+    connectionString: CONNECTION_STRING,
     ssl: {
         rejectUnauthorized: false
     }
@@ -25,7 +25,10 @@ massive({
     console.log('connected to db')
 }).catch(err => console.log(err))
 
-
+app.post('/auth/login', auth.login)
+app.post('/auth/register', auth.register)
+app.get('/auth/logout', auth.logout)
+app.get('/auth/user', auth.getUser)
 
 
 app.listen(SERVER_PORT, () => console.log(`server listening on port ${SERVER_PORT}`))

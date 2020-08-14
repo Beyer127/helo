@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  background: #C6FFDD;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+#header{
+
+
+}
+.header {
+    background: #C6FFDD;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+  width: 30vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 100px;
+  color: white;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+h2{
+    margin: 20px;
+    font-size: 60px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    border: none;
+    width: 150px;
+    margin-top: 20px;
+}
+
+input:focus{
+    background-color: fff;
+    border: 2px solid #C6FFDD;
+    outline: none;
+}
+
+.button{
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    color: white;
+    background-color: black;
+
+}
