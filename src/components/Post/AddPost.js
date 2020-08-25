@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Form extends Component{
+class AddPost extends Component{
     render(){
         return(
             <div>
-                This is the Form page
+                Add Post page
             </div>
         )
     }
 }
 
-export default Form
+export default AddPost
