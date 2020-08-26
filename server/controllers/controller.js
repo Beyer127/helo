@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
   register: async (req, res) => {
+    console.log(req.body)
     const db = req.app.get("db");
     const { username, password, profilePic } = req.body;
     const existingUser = await db.check_user(username);
@@ -11,12 +12,14 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     const [newUser] = await db.create_user([username, hash, profilePic]);
+    console.log(newUser)
     req.session.user = {
       userId: newUser.user_id,
       username: newUser.username,
       password: newUser.password,
       profilePic: newUser.profile_pic,
     };
+    console.log(req.session.user)
     res.status(200).send(req.session.user);
   },
 
@@ -24,6 +27,7 @@ module.exports = {
     const db = req.app.get("db");
     const { username, password } = req.body;
     const [user] = await db.check_user(username);
+    console.log(user)
     if (!user) {
       return res.status(401).send("Incorrect Credentials");
     } else {
@@ -77,6 +81,14 @@ module.exports = {
         console.log(err)
       });
   },
+
+  edit: (req, res) => {
+    
+  },
+
+  deleteOne: (req, res) => {
+
+  }
 };
 
 
