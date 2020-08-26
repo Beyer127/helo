@@ -1,38 +1,54 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import Post from '../Post/Post'
-import './Dashboard.css'
+import React, { Component } from "react";
+import Posts from '../Post/Posts';
+import axios from 'axios';
 
-class Dashboard extends Component{
-    constructor(){
-        super()
-
-        this.state = {
-            posts: []
-        }
+class Dashboard extends Component {
+  constructor(){
+    super();
+    this.state = {
+      posts: [],
+      search: '',
+      userPosts: true
     }
+  }
 
-    componentDidMount() {
-        axios.get('/api/posts').then(post => {
-            this.setState({
-                posts: post.data
-            })
-        })
-    }
+  componentDidMount(){
+    axios.get('/api/posts')
+    .then(res => {
+      this.setState({ posts: res.data })
+    })
+    .catch(err => console.log(err));
+  };
 
+  handleChange(filter){
+    this.setState({ posts: filter })
+  };
 
-    render(){
-        console.log(this.state.posts)
-        return(
-            <div>
-                <nav className="nav">
-                    <p>Home</p>
-                    <p>Add Post</p>
-                    <a href="http://localhost:3000/#/">Logout</a>
-                </nav>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="dashboard">
+        <div className="search-bar" >
+          <input className="search" ></input>
+          <div>
+            <button>Search</button>
+            <button>Reset</button>
+            <sub>My Posts</sub>
+            <input type="checkbox"></input>
+          </div>
+        </div>
+        <div className='posts' >
+        {this.state.posts.map((elem) => {
+          return (
+            <Posts
+            info={elem}
+            key={elem.id}
+            />
+          )
+        })}
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Dashboard
+export default Dashboard;
